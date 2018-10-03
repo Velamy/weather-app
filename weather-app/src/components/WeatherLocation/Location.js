@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Location = (props) => {
   console.log(props);
@@ -9,5 +10,8 @@ const Location = (props) => {
     </div>
   )
 };
+Location.propTypes = {
+  city: PropTypes.string.isRequired
+}
 
 export default Location;
