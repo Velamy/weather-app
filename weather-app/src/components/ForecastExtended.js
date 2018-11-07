@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ForecastItem from './ForecastItem';
 import transformForecast from './../services/transformForecast';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import './styles.css';
 
 const api_key ="a63e26a166319df7ac52ef3ca6a9353a";
@@ -15,7 +16,16 @@ class ForecastExtended extends Component {
     }
   }
   componentDidMount(){
-    const url_forecast = `${url}?q=${this.props.city}&appid=${api_key}`;
+    this.updateCity(this.props.city);
+  }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.city !== this.props.city){
+      this.setState({forecastData: null});
+      this.updateCity(nextProps.city);
+    }
+  }
+  updateCity = city => {
+    const url_forecast = `${url}?q=${city}&appid=${api_key}`;
     fetch(url_forecast).then(
       data => (data.json())
     ).then( weatherData => {
@@ -37,7 +47,7 @@ class ForecastExtended extends Component {
     );
   }
   renderProgress = () => {
-    return "Cargando";
+    return   <CircularProgress className="circularProgress" size={50}/>;
   }
   render(){
     const { city } = this.props;

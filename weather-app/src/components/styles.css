@@ -17,3 +17,8 @@
   padding-top: 15px;
   padding-bottom: 15px;
 }
+
+.circularProgress {
+  justify-content: center;
+  text-align: center;
+}
