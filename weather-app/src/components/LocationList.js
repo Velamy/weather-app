@@ -22,7 +22,7 @@ const LocationList = ({cities, onSelectedLocation}) => {
 );
 }
 
-LocationList.propTYpes = {
+LocationList.propTypes = {
   cities: PropTypes.array.isRequired,
   onSelectedLocation: PropTypes.func,
 }

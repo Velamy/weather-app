@@ -1,7 +1,11 @@
-import { createStore } from 'redux';
-import { city } from './../reducers/city';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import reducers from './../reducers';
+//import { city } from './../reducers/city';
+const initialState = {
+  city: "Buenos Aires,ar"
+};
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; /*Linea necesaria
+para que la herramienta de debbuging de Chrome funcione*/
 
-const initialState = {};
-
-export const store = createStore(city, initialState,
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export const store = createStore(reducers, initialState,composeEnhancers(applyMiddleware(thunk)));

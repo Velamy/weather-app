@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import LocationListContainer from './containers/LocationListContainer';
 import ForecastExtendedContainer from './containers/ForecastExtendedContainer';
-//import ForecastExtended from './components/ForecastExtended';
 import './App.css';
 
 const listCities = [
@@ -39,7 +38,7 @@ class App extends Component {
           <Col xs={12} md={6}>
             <Paper >
               <div className="details">
-                <ForecastExtendedContainer /*city={"Buenos Aires,ar"}*//>
+                <ForecastExtendedContainer/>
               </div>
             </Paper>
           </Col>

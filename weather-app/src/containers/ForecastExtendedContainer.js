@@ -5,10 +5,10 @@ import ForecastExtended from './../components/ForecastExtended';
 
 class ForecastExtendedContainer extends Component {
   render(){
-    console.log(this.props.city);
+    const { city, forecastData } = this.props;
     return(
-    this.props.city ?
-      <ForecastExtended city={this.props.city}/>
+    city && forecastData ?
+      <ForecastExtended city={city} forecastData={forecastData}/>
       : null
 
     )
@@ -17,7 +17,8 @@ class ForecastExtendedContainer extends Component {
 
 ForecastExtendedContainer.propTypes = {
     city: PropTypes.string.isRequired,
+    forecastData: PropTypes.array,
 }
-const mapStateToProps = ({city}) => ({city}); //devolver objeto de las propiedades del estado que nos interesa
+const mapStateToProps = ({city, cities}) => ({city, forecastData: cities[city] ? cities[city].forecastData : null}); //devolver objeto de las propiedades del estado que nos interesa
 
 export default connect(mapStateToProps,null)(ForecastExtendedContainer);
