@@ -10,10 +10,11 @@ const LocationList = ({cities, onSelectedLocation}) => {
   }
   const toListCities = cities => (
     cities.map(city => (
-      <WeatherLocation
-        city={city}
-        key={city}
-        onWeatherLocationClick={() => handleWeatherLocationClick(city)}/>))
+    <WeatherLocation
+        city={city.name}
+        key={city.key}
+        onWeatherLocationClick={() => handleWeatherLocationClick(city.name)}
+        data={city.data}/>))
   );
   return(
   <div className="locationListCont">
@@ -22,7 +23,7 @@ const LocationList = ({cities, onSelectedLocation}) => {
 );
 }
 
-LocationList.propTYpes = {
+LocationList.propTypes = {
   cities: PropTypes.array.isRequired,
   onSelectedLocation: PropTypes.func,
 }
